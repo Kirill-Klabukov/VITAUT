@@ -1,9 +1,18 @@
-<?php 
+Name: <input type="text" name="name" value="<?php echo $name;?>">
 
-echo '<h1>Nadpis uroven 1</h1>';
+E-mail: <input type="text" name="email" value="<?php echo $email;?>">
 
-echo '<h2>Nadpis uroven 2</h2>';
+Website: <input type="text" name="website" value="<?php echo $website;?>">
 
-echo '<p>First web on Azure</p>'; 
+Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
 
-?>
+Gender:
+<input type="radio" name="gender"
+<?php if (isset($gender) && $gender=="female") echo "checked";?>
+value="female">Female
+<input type="radio" name="gender"
+<?php if (isset($gender) && $gender=="male") echo "checked";?>
+value="male">Male
+<input type="radio" name="gender"
+<?php if (isset($gender) && $gender=="other") echo "checked";?>
+value="other">Other
