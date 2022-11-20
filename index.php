@@ -8,9 +8,9 @@
 <h2>Form</h2>
 <form action="input.php" method="POST">
 <p>Login:<br> 
-<input type="password" name="firstname" /></p>
+<input type="text" name="log" /></p>
 <p>Password:<br> 
-<input type="text" name="firstname" /></p>
+<input type="password" name="pas" /></p>
 <p>Форма обучения: <br> 
 <input type="radio" name="eduform" value="очно" />очно <br>
 <input type="radio" name="eduform" value="заочно" />заочно </p>
@@ -26,7 +26,7 @@
 <textarea name="comment" maxlength="200"></textarea></p>
     
 <p> Agree to the newsletter: <br>
-<input type="checkbox" name="hostel" />Да</p>
+<input type="checkbox" name="news" />yes</p>
     
 <input type="submit" value="Send">
 </form>
