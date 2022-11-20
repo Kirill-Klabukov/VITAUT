@@ -7,7 +7,9 @@
 <body>
 <h2>Анкета</h2>
 <form action="input.php" method="POST">
-<p>Введите имя:<br> 
+<p>Login:<br> 
+<input type="text" name="firstname" /></p>
+<p>Password:<br> 
 <input type="text" name="firstname" /></p>
 <p>Форма обучения: <br> 
 <input type="radio" name="eduform" value="очно" />очно <br>
