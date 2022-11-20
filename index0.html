@@ -1,105 +1,63 @@
-<!DOCTYPE HTML>  
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-<style>
-.error {color: #FF0000;}
-</style>
+<title>METANIT.COM</title>
+<meta charset="utf-8" />
 </head>
-<body>  
-
-<?php
-// define variables and set to empty values
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
-$name = $email = $gender = $comment = $website = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["name"])) {
-    $nameErr = "Name is required";
-  } else {
-    $name = test_input($_POST["name"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-      $nameErr = "Only letters and white space allowed";
-    }
-  }
-  
-  if (empty($_POST["email"])) {
-    $emailErr = "Email is required";
-  } else {
-    $email = test_input($_POST["email"]);
-    // check if e-mail address is well-formed
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "Invalid email format";
-    }
-  }
-    
-  if (empty($_POST["website"])) {
-    $website = "";
-  } else {
-    $website = test_input($_POST["website"]);
-    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
-    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-      $websiteErr = "Invalid URL";
-    }
-  }
-
-  if (empty($_POST["comment"])) {
-    $comment = "";
-  } else {
-    $comment = test_input($_POST["comment"]);
-  }
-
-  if (empty($_POST["gender"])) {
-    $genderErr = "Gender is required";
-  } else {
-    $gender = test_input($_POST["gender"]);
-  }
+<body>
+  
+  <?php
+if(isset($_POST["firstname"]) && isset($_POST["eduform"]) && 
+    isset($_POST["comment"]) && isset($_POST["courses"])) 
+{
+    $name = htmlentities($_POST["firstname"]);
+    $eduform = htmlentities($_POST["eduform"]);
+    $hostel = "нет";
+    if(isset($_POST["hostel"])) $hostel = "да";
+    $comment = htmlentities($_POST["comment"]);
+    $courses = $_POST["courses"];
+    $output ="
+    <html>
+    <head>
+    <title>Анкетные данные</title>
+    </head>
+    <body>
+    Вас зовут: $name<br />
+    Форма обучения: $eduform<br />
+    Требуется общежитие: $hostel<br />
+    Выбранные курсы:
+    <ul>";
+    foreach($courses as $item)
+        $output.="<li>" . htmlentities($item) . "</li>";
+    $output.="</ul></body></html>";
+    echo $output;
 }
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
+else
+{   
+    echo "Введенные данные некорректны";
 }
 ?>
-
-<h2>PHP Form Validation Example 1</h2>
-<p><span class="error">* required field</span></p>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  Name: <input type="text" name="name" value="<?php echo $name;?>">
-  <span class="error">* <?php echo $nameErr;?></span>
-  <br><br>
-  E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-  <span class="error">* <?php echo $emailErr;?></span>
-  <br><br>
-  Website: <input type="text" name="website" value="<?php echo $website;?>">
-  <span class="error"><?php echo $websiteErr;?></span>
-  <br><br>
-  Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
-  <br><br>
-  Gender:
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other  
-  <span class="error">* <?php echo $genderErr;?></span>
-  <br><br>
-  <input type="submit" name="submit" value="Submit">  
+  
+<h2>Анкета</h2>
+<form action="input.php" method="POST">
+<p>Введите имя:<br> 
+<input type="text" name="firstname" /></p>
+<p>Форма обучения: <br> 
+<input type="radio" name="eduform" value="очно" />очно <br>
+<input type="radio" name="eduform" value="заочно" />заочно </p>
+<p>Требуется общежитие:<br>
+<input type="checkbox" name="hostel" />Да</p>
+<p>Выберите курсы: <br>
+<select name="courses[]" size="5" multiple="multiple">
+    <option value="ASP.NET">ASP.NET</option>
+    <option value="PHP">PHP</option>
+    <option value="Ruby">RUBY</option>
+    <option value="Python">Python</option>
+    <option value="Java">Java</option>
+</select></p>
+<p>Краткий комментарий: <br>
+<textarea name="comment" maxlength="200"></textarea></p>
+<input type="submit" value="Отправить">
 </form>
-
-<?php
-echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $website;
-echo "<br>";
-echo $comment;
-echo "<br>";
-echo $gender;
-?>
-
 </body>
 </html>
