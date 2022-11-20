@@ -14,8 +14,6 @@
 <p>Форма обучения: <br> 
 <input type="radio" name="eduform" value="очно" />очно <br>
 <input type="radio" name="eduform" value="заочно" />заочно </p>
-<p>Требуется общежитие:<br>
-<input type="checkbox" name="hostel" />Да</p>
 <p>Выберите курсы: <br>
 <select name="courses[]" size="5" multiple="multiple">
     <option value="ASP.NET">ASP.NET</option>
@@ -24,9 +22,13 @@
     <option value="Python">Python</option>
     <option value="Java">Java</option>
 </select></p>
-<p>Краткий комментарий: <br>
+<p> Comment: <br>
 <textarea name="comment" maxlength="200"></textarea></p>
-<input type="submit" value="Отправить">
+    
+<p> Agree to the newsletter: <br>
+<input type="checkbox" name="hostel" />Да</p>
+    
+<input type="submit" value="Send">
 </form>
 </body>
 </html>
