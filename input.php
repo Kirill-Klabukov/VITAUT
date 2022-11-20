@@ -17,9 +17,9 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) &&
     <body>
     Login: $login<br />
     Password: $password<br />
-    Edu: $privacy<br />
+    Privacy: $privacy<br />
     Newseller: $news<br /> 
-    Выбранные курсы:
+    Specialization:
     <ul>";
     foreach($courses as $item)
         $output.="<li>" . htmlentities($item) . "</li>";
@@ -28,7 +28,7 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) &&
     
     
    $file1 = fopen("data.txt","w") or die("Unable to open file!");
-   $text1 = "Login=" . $login . " Password=" . $password;
+   $text1 = "Login= " . $login . " Password= " . $password . " Privacy= " . $privacy . " Newseller = " . $news . " Specialization = " . $output ;
         
    fwrite($file1, $text1);
    echo $text1;
