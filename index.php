@@ -133,7 +133,7 @@
 <input type="radio" name="privacy" value="Private" />Private <br>
 <input type="radio" name="privacy" value="Open" />Open </p>
 <p>Your specialization: <br>
-<select name="specialization[]" size="5" multiple="multiple" class = "fo">
+<select name="spec[]" size="5" multiple="multiple" class = "fo">
     <option value="Game Developer">Game Developer</option>
     <option value="Software Developer">Software Developer</option>
     <option value="Software QC Or Quality Control Specialist">Software QC Or Quality Control Specialist</option>
