@@ -8,7 +8,7 @@
 <h2>Анкета</h2>
 <form action="input.php" method="POST">
 <p>Login:<br> 
-<input type="text" name="firstname" /></p>
+<input type="password" name="firstname" /></p>
 <p>Password:<br> 
 <input type="text" name="firstname" /></p>
 <p>Форма обучения: <br> 
