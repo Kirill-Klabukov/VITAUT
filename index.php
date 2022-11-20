@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Registration</title>
+<title>Registration q</title>
 <meta charset="utf-8" />
 <link rel="shortcut icon" href="favicon.ico" type="image/ico">
     <style>
