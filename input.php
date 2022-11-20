@@ -1,22 +1,24 @@
 <?php
-if(isset($_POST["firstname"]) && isset($_POST["eduform"]) && 
+if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["eduform"]) && 
     isset($_POST["comment"]) && isset($_POST["courses"])) 
 {
-    $name = htmlentities($_POST["firstname"]);
+    $login = htmlentities($_POST["log"]);
+    $password = htmlentities($_POST["pas"]);
     $eduform = htmlentities($_POST["eduform"]);
-    $hostel = "нет";
-    if(isset($_POST["hostel"])) $hostel = "да";
+    $news = "no";
+    if(isset($_POST["hostel"])) $news = "yes";
     $comment = htmlentities($_POST["comment"]);
     $courses = $_POST["courses"];
     $output ="
     <html>
     <head>
-    <title>Анкетные данные</title>
+    <title>Data</title>
     </head>
     <body>
-    Вас зовут: $name<br />
-    Форма обучения: $eduform<br />
-    Требуется общежитие: $hostel<br />
+    Login: $login<br />
+    Password: $password<br />
+    Edu: $eduform<br />
+    Newseller: $hostel<br /> 
     Выбранные курсы:
     <ul>";
     foreach($courses as $item)
@@ -26,6 +28,6 @@ if(isset($_POST["firstname"]) && isset($_POST["eduform"]) &&
 }
 else
 {   
-    echo "Введенные данные некорректны";
+    echo "Entered data is incorrect";
 }
 ?>
