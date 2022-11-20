@@ -8,7 +8,7 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) &&
     $news = "no";
     if(isset($_POST["news"])) $news = "yes";
     $comment = htmlentities($_POST["comment"]);
-    $spec = $_POST["specializations"];
+    $spec = $_POST["specialization"];
     $output ="
     <html>
     <head>
