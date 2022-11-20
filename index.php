@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>METANIT.COM</title>
+<title>Registration</title>
 <meta charset="utf-8" />
 </head>
 <body>
-<h2>Анкета</h2>
+<h2>Form</h2>
 <form action="input.php" method="POST">
 <p>Login:<br> 
 <input type="password" name="firstname" /></p>
