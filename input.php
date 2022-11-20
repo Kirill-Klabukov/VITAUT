@@ -1,10 +1,10 @@
 <?php
-if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["eduform"]) && 
+if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) && 
     isset($_POST["comment"]) && isset($_POST["courses"])) 
 {
     $login = htmlentities($_POST["log"]);
     $password = htmlentities($_POST["pas"]);
-    $eduform = htmlentities($_POST["eduform"]);
+    $privacy = htmlentities($_POST["privacy"]);
     $news = "no";
     if(isset($_POST["news"])) $news = "yes";
     $comment = htmlentities($_POST["comment"]);
@@ -17,7 +17,7 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["eduform"]) &&
     <body>
     Login: $login<br />
     Password: $password<br />
-    Edu: $eduform<br />
+    Edu: $privacy<br />
     Newseller: $news<br /> 
     Выбранные курсы:
     <ul>";
