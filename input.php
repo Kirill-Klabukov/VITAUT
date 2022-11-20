@@ -24,7 +24,7 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) &&
     foreach($spec as $item)
         $output.="<li>" . htmlentities($item) . "</li>";
     $output.="</ul></body></html>";
-    echo $output;
+    
     
     
    $file1 = fopen("data.txt","w") or die("Unable to open file!");
