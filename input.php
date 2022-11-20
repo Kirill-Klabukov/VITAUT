@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) && 
-    isset($_POST["comment"]) && isset($_POST["specializations"])) 
+    isset($_POST["comment"]) && isset($_POST["specialization"])) 
 {
     $login = htmlentities($_POST["log"]);
     $password = htmlentities($_POST["pas"]);
