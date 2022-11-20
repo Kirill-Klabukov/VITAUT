@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) && 
-    isset($_POST["comment"]) && isset($_POST["specialization[]"])) 
+    isset($_POST["comment"]) && isset($_POST["spec"])) 
 {
     $login = htmlentities($_POST["log"]);
     $password = htmlentities($_POST["pas"]);
@@ -8,7 +8,7 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) &&
     $news = "no";
     if(isset($_POST["news"])) $news = "yes";
     $comment = htmlentities($_POST["comment"]);
-    $spec = $_POST["specialization[]"];
+    $spec = $_POST["spec"];
     $output ="
     <html>
     <head>
