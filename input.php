@@ -24,10 +24,10 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) &&
         
         .block {
             
-            width: 350;
-            height: 750;
+            width: 200;
+            height: 200;
             position: absolute;
-            top: 20%;
+            top: 40%;
             left: 50%;
             margin: -125px 0 0 -125px;
             font-family: 'Open Sans', sans-serif;
@@ -39,6 +39,7 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) &&
             
         }
     </style>
+    
     </head>
     <body>
     <div class = "block">
@@ -46,11 +47,12 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["privacy"]) &&
     Password: $password<br />
     Privacy: $privacy<br />
     Newseller: $news<br /> 
+    </div>
     Specialization:
     <ul>";
     foreach($spec as $item)
         $output.="<li>" . htmlentities($item) . "</li>";
-    $output.="</ul> </div> </body></html>";
+    $output.="</ul>  </body></html>";
     
     
     
