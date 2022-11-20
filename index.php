@@ -12,8 +12,8 @@
 <p>Password:<br> 
 <input type="password" name="pas" /></p>
 <p>Форма обучения: <br> 
-<input type="radio" name="eduform" value="очно" />Private <br>
-<input type="radio" name="eduform" value="заочно" />Open </p>
+<input type="radio" name="privacy" value="очно" />Private <br>
+<input type="radio" name="privacy" value="заочно" />Open </p>
 <p>Выберите курсы: <br>
 <select name="courses[]" size="5" multiple="multiple">
     <option value="ASP.NET">ASP.NET</option>
