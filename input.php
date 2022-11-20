@@ -6,7 +6,7 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["eduform"]) &&
     $password = htmlentities($_POST["pas"]);
     $eduform = htmlentities($_POST["eduform"]);
     $news = "no";
-    if(isset($_POST["hostel"])) $news = "yes";
+    if(isset($_POST["news"])) $news = "yes";
     $comment = htmlentities($_POST["comment"]);
     $courses = $_POST["courses"];
     $output ="
@@ -25,6 +25,14 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["eduform"]) &&
         $output.="<li>" . htmlentities($item) . "</li>";
     $output.="</ul></body></html>";
     echo $output;
+    
+    
+   $file1 = fopen("data.txt","w") or die("Unable to open file!");
+   $text1 = "Login=" . $login . " Password=" . $password;
+        
+   fwrite($file1, $text1);
+   echo $text1;
+   fclose($file1);
 }
 else
 {   
