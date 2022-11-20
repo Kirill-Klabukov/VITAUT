@@ -18,7 +18,7 @@ if(isset($_POST["log"]) && isset($_POST["pas"]) && isset($_POST["eduform"]) &&
     Login: $login<br />
     Password: $password<br />
     Edu: $eduform<br />
-    Newseller: $hostel<br /> 
+    Newseller: $news<br /> 
     Выбранные курсы:
     <ul>";
     foreach($courses as $item)
