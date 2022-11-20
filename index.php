@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Registration</title>
+<title>Registration form</title>
 <meta charset="utf-8" />
 <link rel="shortcut icon" href="favicon.ico" type="image/ico">
+    <style>
+        .main {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: auto;
+        }
+        
+        .block {
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            margin: -125px 0 0 -125px;
+        
+
+    </style>    
+
 </head>
 <body>
-<h2>Form p</h2>
+    <div class = 'main'>
+        
+<div class = 'block'>        
+<h2>Registration form</h2>
 <form action="input.php" method="POST">
 <p>Login:<br> 
 <input type="text" name="log" /></p>
@@ -35,5 +59,8 @@
     
 <input type="submit" value="Send">
 </form>
+
+</div>     
+ </div>
 </body>
 </html>
