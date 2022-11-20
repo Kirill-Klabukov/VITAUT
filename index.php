@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>METANIT.COM</title>
+<title>METANIT.C</title>
 <meta charset="utf-8" />
 </head>
 <body>
