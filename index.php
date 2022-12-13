@@ -1,14 +1,9 @@
-<?php
-echo '<h1>getParameters page</h1>';
+<?php 
 
-$sn1 = $_GET["a"];
-$sn2 = $_GET["b"];
+echo '<h1>Nadpis uroven 1</h1>';
 
-$text = "a=" . $sn1 . " b=" . $sn2;
-$sum = $sn1 + $sn2;
+echo '<h2>Nadpis uroven 2</h2>';
 
-echo $text;
-echo "<br>";
-echo "Sum:" . $sum;
+echo '<p>First web on Azure</p>'; 
 
 ?>
