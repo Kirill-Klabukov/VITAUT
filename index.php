@@ -1,6 +1,6 @@
 <?php 
 
-echo '0';
+echo '1';
 
 
 echo '<h1>Nadpis uroven 1</h1>';
