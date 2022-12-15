@@ -9,29 +9,19 @@ echo '<html>
   
   <script>
   
+var a = 0;
+  
   
 function on() {
-  // Get the values of the a and b variables
-  var a = document.getElementById("a").value;
-  
-  // Plus 1 to a
-  var result = a + 1; // ON
-
-  // Display the result on the page
-  document.getElementById("a").innerHTML = result;
+  a +=1;
+  document.getElementById("a").innerHTML = a;
 }
 
 
 
 function off() {
-  // Get the values of the a and b variables
-  var a = document.getElementById("a").value;
-  
-  // Subtract 1 from a
-  var result = a - 1; // OFF
-
-  // Display the result on the page
-  document.getElementById("a").innerHTML = result;
+  a -=1;
+  document.getElementById("a").innerHTML = a;
 }
   
   
@@ -45,7 +35,7 @@ function off() {
 
 
 
-<a id="a">0</a>
+<a id="a"></a>
 
 
 
