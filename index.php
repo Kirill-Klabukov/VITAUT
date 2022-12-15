@@ -45,7 +45,7 @@ function off() {
 
 
 
-<a id="a"></a>
+<a id="a">0</a>
 
 
 
