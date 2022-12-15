@@ -14,7 +14,7 @@ function on() {
   // Get the values of the a and b variables
   var a = document.getElementById("a").value;
   
-  // Subtract 1 from a
+  // Plus 1 to a
   var result = a + 1; // ON
 
   // Display the result on the page
