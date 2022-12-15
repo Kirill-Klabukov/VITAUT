@@ -2,7 +2,7 @@
 
 $a = 0;
 
-echo '<a id="a">$a</a>';
+echo '<a id="a">'$a'</a>';
 
 
 echo '<h1>Nadpis uroven 1</h1>';
