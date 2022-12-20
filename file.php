@@ -16,6 +16,8 @@ fclose($file2);
 
 $file3 = fopen("actuator.txt","r") or die ("Subor neexistuje");
 $text3 = fread($file3,filesize("actuator.txt"));
+echo $text1;
+echo $text2;
 echo $text3;
 fclose($file3);
 ?>
