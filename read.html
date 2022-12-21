@@ -39,5 +39,29 @@ function openLink(url) {
 </script>
   
   
+  
+   <h1> Rele is : </h1>
+  <div id="rele"></div>
+
+  <script>
+    function readTextFile() {
+      var rawFile = new XMLHttpRequest();
+      rawFile.open("GET", "data.txt", false);
+      rawFile.onreadystatechange = function () {
+        if (rawFile.readyState === 4) {
+          if (rawFile.status === 200 || rawFile.status == 0) {
+            var allText = rawFile.responseText;
+            document.getElementById("rele").innerHTML = allText;
+          }
+        }
+      }
+      rawFile.send(null);
+    }
+
+    setInterval(readTextFile, 2000);
+  </script>
+  
+  
+  
 </body>
 </html>
