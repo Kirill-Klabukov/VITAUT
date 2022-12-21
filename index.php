@@ -10,8 +10,8 @@ echo "
 
 <body>
 
-<button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=1', '_blank')">Click me </button>
-<button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=0', '_blank')">Click me </button>
+<button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=1', '_blank')">ON 1 </button>
+<button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=0', '_blank')">OFF 0 </button>
 
 </body>
 
