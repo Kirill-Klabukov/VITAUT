@@ -13,4 +13,11 @@ fwrite($file, "$var1,$var2");
 // Close the file
 fclose($file);
 
+
+
+$file3 = fopen("data.txt","r") or die ("Subor neexistuje");
+$text3 = fread($file3,filesize("actuator.txt"));
+echo $text3;
+fclose($file3);
+
 ?>
