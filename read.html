@@ -44,21 +44,21 @@ function openLink(url) {
   <div id="rele"></div>
 
   <script>
-    function readTextFile() {
-      var rawFile = new XMLHttpRequest();
-      rawFile.open("GET", "data.txt", false);
-      rawFile.onreadystatechange = function () {
-        if (rawFile.readyState === 4) {
-          if (rawFile.status === 200 || rawFile.status == 0) {
-            var allText = rawFile.responseText;
+    function readTextFile2() {
+      var rawFile2 = new XMLHttpRequest();
+      rawFile2.open("GET", "data.txt", false);
+      rawFile2.onreadystatechange = function () {
+        if (rawFile2.readyState === 4) {
+          if (rawFile2.status === 200 || rawFile2.status == 0) {
+            var allText = rawFile2.responseText;
             document.getElementById("rele").innerHTML = allText;
           }
         }
       }
-      rawFile.send(null);
+      rawFile2.send(null);
     }
 
-    setInterval(readTextFile, 2000);
+    setInterval(readTextFile2, 2000);
   </script>
   
   
