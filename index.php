@@ -1,64 +1,24 @@
 <?php 
 
-$a = 0;
 
-echo '<html> 
+
+echo "
+<html> 
 <head>
   <title> Rele ESP </title>
-  
-  
-  <script>
-  
-var a = 0;
-  
-  
-function on() {
-  a +=1;
-  document.getElementById("a").innerHTML = a;
-}
-
-
-
-function off() {
-  a -=1;
-  document.getElementById("a").innerHTML = a;
-}
-  
-  
-  
-  </script>
 </head>
 
 <body>
 
-
-
-
-
-<a id="a"></a>
-
-
-
-
-<input type="button" value="ON" onclick="javascript:on();">
-<input type="button" value="OFF" onclick="javascript:off();">
+<button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=1', '_blank')">Click me </button>
+<button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=0', '_blank')">Click me </button>
 
 </body>
 
-</html> ';
+</html>;
 
+"
 
-$var1 = $a;
-
-
-// Open the text file for writing
-$file = fopen("data.txt", "w");
-
-// Write the variables to the file, separated by a comma
-fwrite($file, "$var1");
-
-// Close the file
-fclose($file);
 
 
 ?>
