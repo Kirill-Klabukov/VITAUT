@@ -1,5 +1,5 @@
 <?php
-echo '<h1>getParameters page</h1>';
+echo '<h1>getParameters page1</h1>';
 
 $sn1 = $_GET["a"];
 $sn2 = $_GET["b"];
@@ -21,7 +21,7 @@ fclose($file);
 //$sum = $sn1 + $sn2;
 
 
-$file3 = fopen("data.txt","r") or die ("Subor neexistuje");
+$file3 = fopen("sensors.txt","r") or die ("Subor neexistuje");
 $text3 = fread($file3,filesize("sensors.txt"));
 echo $text3;
 fclose($file3);
