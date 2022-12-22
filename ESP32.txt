@@ -1,0 +1,256 @@
+//#include <ESP8266WiFi.h>
+//#include <ESP8266HTTPClient.h>
+#include <WiFiClientSecure.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+#include <DHT.h>   
+#include <IRremote.h>
+#include <cstdlib>
+#include <iostream>
+
+
+using namespace std;
+
+// Define Wifi SSID and PASS
+const char* ssid = "NRM";
+const char* pass = "KIRA5481";
+WiFiClient wifi;
+
+// ports
+#define PIN_RELAY 5  
+#define ONE_WIRE_BUS 2
+DHT dht(4, DHT11);
+IRrecv irrecv(15); 
+
+const int buzzer = 19;
+decode_results results;
+
+
+// variable
+int poc=0;
+
+
+OneWire oneWire(ONE_WIRE_BUS);
+
+DallasTemperature sensors(&oneWire);
+
+
+// setup - vykonava sa len raz pri sputeni programu
+// pokusi sa pripojit k wifi
+void setup()
+{
+  Serial.begin(9600);
+  sensors.begin();
+  dht.begin();  
+  irrecv.enableIRIn();
+  WiFi.begin(ssid, pass);
+  Serial.println("Connecting");
+
+
+  pinMode(PIN_RELAY, OUTPUT); // Declaring a Pin Relay as an Output
+  digitalWrite(PIN_RELAY, HIGH); // Turn off the relay - send a high signal
+
+  pinMode(13, OUTPUT); // output
+  //pinMode(15, INPUT);
+  pinMode(buzzer, OUTPUT);  
+
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay (500);
+    Serial.print(".");
+  }
+
+  Serial.println("Connected");
+}
+
+// vykonava sa dookola
+void loop()
+{
+    // Váš kód ...
+// pomocne premenne
+   poc++;
+   String hodnota1=String(poc);
+   String hodnota2="22";
+   String payload="";
+   int check = 0;
+   int isOn = 0;
+
+
+    if (irrecv.decode(&results)) // if the data has arrived, we execute the commands
+   {  
+      Serial.println("IRRECV:");
+      Serial.println(results.value); // we send the received data to the port
+   
+   
+      // turn on and off the LED, depending on the received signal and also make changes to the EA server
+      if (results.value == 16724175) { 
+      digitalWrite(13, HIGH);
+      isOn = 1;
+
+
+
+      HTTPClient http; // vytvorenie HTTP clienta
+      String server_name = "https://vitaut.azurewebsites.net/dat.php?var1=1"; // nazov vasho webu a web stranky, ktoru chcete nacitat
+      http.begin(server_name.c_str());
+      int httpCode = http.GET(); // http code
+
+
+    if (httpCode>0) 
+    {
+      payload= http.getString();
+      Serial.print("HTTP Response code: ");
+      Serial.println(httpCode); // vypisanie http code do Serial monitoru (200 - OK)
+    }
+    http.end();
+   }
+      if (results.value == 16738455) { 
+      digitalWrite(13, LOW);
+      isOn = 0;
+
+
+      HTTPClient http; // vytvorenie HTTP clienta
+      String server_name = "https://vitaut.azurewebsites.net/dat.php?var1=0"; // nazov vasho webu a web stranky, ktoru chcete nacitat
+      http.begin(server_name.c_str());
+      int httpCode = http.GET(); // http code
+
+       if (httpCode>0) 
+    {
+      payload= http.getString();
+      Serial.print("HTTP Response code: ");
+      Serial.println(httpCode); // vypisanie http code do Serial monitoru (200 - OK)    
+
+    }
+    http.end();
+   }
+      irrecv.resume(); // we receive the following signal on the IR receiver
+   }
+
+
+  
+
+  // NACITANIE DAT Z WEBU
+  if (WiFi.status() == WL_CONNECTED) // ak je ESP pripojene k wifi
+  { 
+        
+      float h = dht.readHumidity();
+      float t = dht.readTemperature();
+
+   
+      Serial.print("Humidity: ");
+      Serial.println(h);
+      Serial.print("Temperature: ");
+      Serial.println(t);
+      
+      delay(200);
+
+
+
+    HTTPClient http; // vytvorenie HTTP clienta
+    String server_name = "https://vitaut.azurewebsites.net/data.txt"; // nazov vasho webu a web stranky, ktoru chcete nacitat
+    http.begin(server_name.c_str());
+    int httpCode = http.GET(); // http code
+
+    if (httpCode>0) 
+      payload= http.getString();
+      Serial.print("HTTP Response code: ");
+      Serial.println(httpCode); // vypisanie http code do Serial monitoru (200 - OK)
+      Serial.println(payload); // vypisanie celej html stranky, ktora sa na tejto url nachadza (zobrazene v serial monitore)
+
+      check = atoi(&payload[0]); 
+  
+      Serial.println(check);
+
+    http.end();
+  }
+
+    if (check == 1 && isOn == 0 )
+      {
+        isOn = 1; //+=
+        Serial.println("RELE TURNING ON"); 
+        tone(buzzer, 1000); // Send 1KHz sound signal...
+        delay(200);        // 
+        noTone(buzzer);     // Stop sound...
+        delay(200);        //
+        digitalWrite(13, HIGH);  // LED 
+        digitalWrite(PIN_RELAY, HIGH); // RELE
+      }
+      else
+      {
+      
+      if (check == 0 ) 
+      {
+        isOn = 0;
+        Serial.println("RELE TURNING OFF");
+        digitalWrite(13, LOW); // LED
+        digitalWrite(PIN_RELAY, LOW); // RELE       
+      }
+
+      }
+
+
+  int hodnota3 = (payload[2]); // nacitanie 2. znaku z html (>)
+
+
+  Serial.println(hodnota3); // vypisanie ASCII (62) hodnoty znaku >, ktory bol nacitany v payloade
+  delay(200); 
+  
+  float temperature = dht.readTemperature();  
+  float humidity = dht.readHumidity();
+
+  if (humidity >= 50 || temperature >= 100) { 
+      digitalWrite(13, LOW);
+      isOn = 0;
+
+
+      HTTPClient http; // vytvorenie HTTP clienta
+      String server_name = "https://vitaut.azurewebsites.net/dat.php?var1=0"; // nazov vasho webu a web stranky, ktoru chcete nacitat
+      http.begin(server_name.c_str());
+      int httpCode = http.GET(); // http code
+
+       if (httpCode>0) 
+    {
+      payload= http.getString();
+      Serial.print("HTTP Response code: ");
+      Serial.println(httpCode); // vypisanie http code do Serial monitoru (200 - OK)    
+
+    }
+    http.end();
+   }
+  
+
+  // ZAPIS DAT NA WEB
+  if (WiFi.status() == WL_CONNECTED) 
+  {
+    HTTPClient http;
+    String server_name = "https://vitaut.azurewebsites.net/getParameters.php/?"; // nazov vasho webu a web stranky, ktoru chcete nacitat
+
+    server_name += "temperature="; // nazov premennej na webe // PRIDANE 
+    server_name += temperature; // hodnota premennej
+
+    server_name += "&humidity="; // nazov premennej na webe // PRIDAT DO WEBU !!!
+    server_name += humidity; // hodnota premennej
+
+    server_name += "&rvc="; // nazov premennej na webe // PRIDAT DO WEBU !!!
+    server_name += results.value; // hodnota premennej
+
+    
+    http.begin(server_name.c_str());
+    int httpCode = http.GET(); // http code
+
+    if (httpCode>0) 
+    {
+      payload= http.getString();
+      Serial.print("HTTP Response code: ");
+      Serial.println(httpCode); // vypisanie http code do Serial monitoru (200 - OK)
+      Serial.println(payload); // vypisanie celej html stranky, ktora sa na tejto url nachadza (zobrazene v serial monitore)
+      
+      
+      int hodnota3 = (payload[26]); // nacitanie 2. znaku z html (>)
+      Serial.println(hodnota3); // vypisanie ASCII (62) hodnoty znaku >, ktory bol nacitany v payloade
+      delay(200); 
+    }
+    http.end();
+  }  
+}
