@@ -20,6 +20,25 @@
             left: 0;
             overflow: auto;
         }
+    
+     .glow-button {
+            
+            text-decoration: none;
+            display: inline-block;
+            padding: 6px 30px;
+            margin: 5px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 40px 40px #529b49 inset, 0 0 0 0 #529b49;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: white;
+            transition: .15s ease-in-out;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 10px 0 #529b49 inset, 0 0 10px 4px #529b49;
+            color: #529b49;
+        }
         
         
     
@@ -64,13 +83,13 @@
   
     <tr>
       <td>
-          <button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=1', '_blank')">ON 1 </button>
+          <button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=1', '_blank')"  class="glow-button">ON 1 </button>
       </td>
     </tr>
     
     <tr>
       <td>
-          <button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=0', '_blank')">OFF 0 </button>
+          <button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=0', '_blank')"  class="glow-button">OFF 0 </button>
       </td>
     </tr>
 
