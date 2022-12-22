@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Control panel</title>
+  <title>Inteligentný Predlžovací Kábel</title>
 </head>
 <body>
-  <h1>Values from text file (sensors):</h1>
-  <div id="values"></div>
+  
+  
+  <table> 
+   <tr>
+    <td> 
+      <h1>Values from sensors:</h1>
+    </td>
+   </tr> 
+    
+    <tr>
+      <td>
+        <div id="values"></div>
+      </td>
+    </tr>
+    
+  
 
   <script>
     function readTextFile() {
@@ -25,9 +39,19 @@
     setInterval(readTextFile, 2000);
   </script>
   
-  
-<button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=1', '_blank')">ON 1 </button>
-<button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=0', '_blank')">OFF 0 </button>
+    <tr>
+      <td>
+          <button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=1', '_blank')">ON 1 </button>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+          <button onclick="window.open('https://vitaut.azurewebsites.net/dat.php?var1=0', '_blank')">OFF 0 </button>
+      </td>
+    </tr>
+
+
   
   
   <script>
@@ -38,10 +62,19 @@ function openLink(url) {
 }
 </script>
   
+    <tr>
+      <td>
+         <h1> Rele is : </h1>
+      </td>
+      
+      <td>
+        <div id="rele"></div>
+      </td>
+      
+    </tr>
   
   
-   <h1> Rele is : </h1>
-  <div id="rele"></div>
+  
 
   <script>
     function readTextFile2() {
@@ -62,6 +95,6 @@ function openLink(url) {
   </script>
   
   
-  
+ </table>
 </body>
 </html>
