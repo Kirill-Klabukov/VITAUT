@@ -11,7 +11,7 @@ $sn7 = $_GET["rvc"];
 $file = fopen("sensors.txt", "w");
 
 // Write the variables to the file, separated by a comma
-fwrite($file, "temperature = .$sn5,humidity = . $sn6, rvc = .$sn7");
+fwrite($file, "temperature = $sn5, humidity = $sn6, rvc = $sn7");
 
 // Close the file
 fclose($file);
